@@ -1,0 +1,32 @@
+.comments {
+  padding: @gutter;
+}
+
+.comment {
+  border: 1px solid #e5e5e5;
+  padding: @gutter;
+  margin: 0 0 @gutter 0;
+  .avatar {
+    @size: 60px;
+    width: @size;
+    height: @size;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: @size;
+      height: @size;
+    }
+  }
+}
+
+.comment-form {
+  border: 1px solid #e5e5e5;
+  padding: @gutter;
+  margin-bottom: @gutter;
+  input {
+    padding: 8px;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+  }
+}

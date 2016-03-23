@@ -1,0 +1,40 @@
+{
+  "name": "react-modal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nerdburn/react-modal.git"
+  },
+  "scripts": {
+    "start": "http-server ./pub",
+    "build": "npm run build-html && npm run build-js && npm run build-less && npm run copy-statics",
+    "watch": "npm run watch-html & npm run watch-js & npm run watch-less",
+    "build-html": "npm run clean-html && cp -rv src/html/* pub/",
+    "build-js": "npm run clean-js && browserify -t [ babelify --presets [ react ] ] src/js/app.js -o pub/bundle.js",
+    "build-less": "npm run clean-less && lessc src/less/base.less pub/bundle.css && npm run autoprefix",
+    "autoprefix": "postcss --use autoprefixer pub/bundle.css -d pub/",
+    "copy-statics": "cp -rv static/* pub/",
+    "watch-html": "nodemon -e html -w src/html -x 'npm run build-html'",
+    "watch-js": "nodemon -e js -w src/js -x 'npm run build-js'",
+    "watch-less": "nodemon -e less -w src/less -x 'npm run build-less'",
+    "clean-html": "find pub -name '*.html' -type f -delete",
+    "clean-js": "find pub -name '*.js' -type f -delete",
+    "clean-less": "find pub -name '*.css' -type f -delete"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.4",
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "http-server": "^0.9.0",
+    "less": "^2.6.1",
+    "nodemon": "^1.9.1",
+    "postcss": "^5.0.19",
+    "postcss-cli": "^2.5.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "dependencies": {
+    "jquery": "^2.2.2",
+    "react-marked": "^0.3.1"
+  }
+}
